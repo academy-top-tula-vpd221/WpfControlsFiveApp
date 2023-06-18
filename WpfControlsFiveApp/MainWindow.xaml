@@ -1,0 +1,76 @@
+﻿<Window x:Class="WpfControlsFiveApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfControlsFiveApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <StackPanel>
+        <DataGrid x:Name="data"
+                  FontSize="20"
+                  AutoGenerateColumns="False"
+                  RowBackground="Aqua"
+                  AlternatingRowBackground="White"
+                  ColumnHeaderHeight="30"
+                  ColumnWidth="150"
+                  GridLinesVisibility="All"
+                  HorizontalGridLinesBrush="Red"
+                  VerticalGridLinesBrush="Green">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Title}" Header="Название"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Brand}" Header="Производитель"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=Price}" Header="Цена"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Binding="{Binding Path=IsBuy}" Header="В продаже"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Calendar x:Name="calendar"
+                  IsTodayHighlighted="True"
+                  DisplayMode="Month"
+                  SelectionMode="MultipleRange">
+            <Calendar.BlackoutDates>
+                <CalendarDateRange Start="6/10/2023" End="6/22/2023"/>
+            </Calendar.BlackoutDates>
+        </Calendar>
+        <DatePicker Width="300"
+                    SelectedDateFormat="Long"/>
+        <Button Click="Button_Click" Width="200">Show Dates</Button>
+        <Slider x:Name="red"
+                Width="300"
+                Orientation="Horizontal"
+                TickPlacement="BottomRight"
+                Minimum="0"
+                Maximum="255"
+                TickFrequency="5"
+                ValueChanged="red_ValueChanged"/>
+        <Slider x:Name="blue"
+                Width="300"
+                Orientation="Horizontal"
+                TickPlacement="BottomRight"
+                Minimum="0"
+                Maximum="255"
+                TickFrequency="5"
+                ValueChanged="red_ValueChanged"/>
+        <Slider x:Name="green"
+                Width="300"
+                Orientation="Horizontal"
+                TickPlacement="BottomRight"
+                Minimum="0"
+                Maximum="255"
+                TickFrequency="5"
+                ValueChanged="red_ValueChanged"/>
+        <Grid>
+            <ProgressBar x:Name="pgrBar"
+                     Minimum="0" 
+                     Maximum="100"  
+                     Height="30"
+                     Width="300"/>
+            <TextBlock Text="{Binding ElementName=pgrBar, Path=Value, StringFormat={}{0:0}%}" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        </Grid>
+        
+        <Button Click="Button_Click_1">Progress Start</Button>
+    </StackPanel>
+</Window>
